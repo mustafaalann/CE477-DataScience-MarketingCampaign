@@ -4,7 +4,7 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-df = pd.read_csv('marketing_campaign.csv')
+df = pd.read_csv("marketing_campaign.csv",delimiter=';')
 columns_names = df.columns.tolist()
 print("Columns names:")
 print(columns_names)
