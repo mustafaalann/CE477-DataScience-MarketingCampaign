@@ -1,5 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv('marketing_campaign.csv')
+data = pd.read_csv('marketing_campaign.csv', delimiter=';')
 
-df.tostring(df.to_string())
+print(data)
+df = pd.read_csv('marketing_campaign.csv')
