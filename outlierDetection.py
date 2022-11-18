@@ -20,12 +20,12 @@ def IQR(x):  # Q3 - Q1
 
 
 def lowerFence(x):  # Q1 - 1.5 * IQR
-    lowerFen = np.quantile(df[x], 0.25) - 1.5 * IQR(x)
+    lowerFen = np.quantile(df[x].dropna(), 0.25) - 1.5 * IQR(x)
     return lowerFen
 
 
 def upperFence(x):  # Q3 + 1.5 * IQR
-    upperFen = np.quantile(df[x], 0.75) + 1.5 * IQR(x)
+    upperFen = np.quantile(df[x].dropna(), 0.75) + 1.5 * IQR(x)
     return upperFen
 
 def printAll (x) :
