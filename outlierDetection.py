@@ -35,6 +35,8 @@ def printAll (x) :
     print(lowerFence(x))
     print("Upper fence of " + x + ": ")
     print(upperFence(x))
+    print("Number of outliers: ")
+    print(len(outlierFind(x)))
     print("Outliers: ")
     print(outlierFind(x))
     print()
