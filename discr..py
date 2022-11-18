@@ -15,9 +15,9 @@ numerics[['Income', 'Kidhome', 'Teenhome', 'Recency', 'MntWines', 'MntFruits',
                 'NumWebVisitsMonth']].hist(bins=15,figsize=(8,6))
 print(numerics.shape)
 data = numerics.values[:, :-1]
-trans = KBinsDiscretizer(n_bins=10, encode='ordinal', strategy='uniform')
+trans = KBinsDiscretizer(n_bins=15, encode='ordinal', strategy='uniform')
 data = trans.fit_transform(data)
 numerics = DataFrame(data)
 print(numerics.describe())
-numerics.hist()
+numerics.hist(bins=15,figsize=(8,6))
 plt.show()
