@@ -12,7 +12,7 @@ numerics = df[['Income', 'Kidhome', 'Teenhome', 'Recency', 'MntWines', 'MntFruit
 numerics[['Income', 'Kidhome', 'Teenhome', 'Recency', 'MntWines', 'MntFruits',
                 'MntMeatProducts', 'MntFishProducts', 'MntSweetProducts', 'MntGoldProds', 'NumDealsPurchases',
                 'NumWebPurchases', 'NumCatalogPurchases', 'NumStorePurchases',
-                'NumWebVisitsMonth']].hist(bins=15,figsize=(8,6))
+                'NumWebVisitsMonth']].dropna().hist(bins=15,figsize=(8,6))
 print(numerics.shape)
 data = numerics.values[:, :-1]
 trans = KBinsDiscretizer(n_bins=15, encode='ordinal', strategy='uniform')

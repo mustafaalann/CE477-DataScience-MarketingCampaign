@@ -1,36 +1,38 @@
 
 import numpy as np
 import pandas as pd
-import matplotlib as mpl
-import matplotlib.pyplot as plt
-import seaborn as sns
-from sklearn.preprocessing import StandardScaler
-from sklearn.preprocessing import MinMaxScaler
+import plotly.express as px
+from matplotlib import pyplot as plt
 from sklearn.decomposition import PCA
-import matplotlib.pyplot as plot
-from sklearn.preprocessing import Normalizer
+from sklearn.preprocessing import StandardScaler
 
-df = pd.read_csv("marketing_campaign.csv", delimiter=';')
-columnsToRescale = df[['Income', 'Kidhome', 'Teenhome', 'Recency', 'MntWines', 'MntFruits',
-                      'MntMeatProducts', 'MntFishProducts', 'MntSweetProducts', 'MntGoldProds', 'NumDealsPurchases',
-                      'NumWebPurchases', 'NumCatalogPurchases', 'NumStorePurchases', 'NumWebVisitsMonth']].dropna()
-print('Before Normalization')
-print(columnsToRescale)
+dataset = pd.read_csv('marketing_campaign.csv',delimiter=';')
+numerics = dataset[["Income","Recency","MntWines","MntFruits","MntMeatProducts","MntFishProducts","MntSweetProducts",
+             "MntGoldProds","NumDealsPurchases","NumWebPurchases","NumCatalogPurchases","NumStorePurchases",
+            "NumWebVisitsMonth"]].dropna()
 
-#Normalization
-scaler = Normalizer().fit(columnsToRescale)
-normalizedData = scaler.transform(columnsToRescale)
-normalizedData = pd.df(normalizedData,index=columnsToRescale.index,columns=columnsToRescale.columns)
-print('After Normalization')
-print(normalizedData)
+colours = []
+for i in range(2216):
+    colours.append(i+1)
 
-# Reformating and viewing results
-loadings = pd.df(pca.components_.T,
-columns=['PC%s' % _ for _ in range(len(df_normalizedData.columns))],
-index=df.columns)
-print(loadings)
+scaler = StandardScaler()
+scaler.fit(numerics)
+scaled_data = scaler.transform(numerics)
 
-plot.plot(pca.explained_variance_ratio_)
-plot.ylabel('Explained Variance')
-plot.xlabel('Components')
-plot.show()
+print(scaled_data)
+
+pca = PCA(n_components=2)
+
+pca.fit(scaled_data)
+
+x_pca = pca.transform(scaled_data)
+print(scaled_data.shape)
+print(x_pca.shape)
+
+plt.figure(figsize=(8,6))
+plt.scatter(x_pca[:,0],x_pca[:,1],c=colours)
+plt.xlabel("First Principle Component")
+plt.ylabel("Second Principle Component")
+
+plt.show()
+
