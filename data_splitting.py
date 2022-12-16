@@ -4,12 +4,12 @@ from sklearn.model_selection import train_test_split
 # reading dataset from csv file
 df = pd.read_csv("marketing_campaign.csv", delimiter=';')
 
-# getting the locations
-X = df.iloc[:, :-1]
-y = df.iloc[:, -1]
+# Selecting columns
+x = df.iloc[:, :-1] #until the last column of data frame
+y = df.iloc[:, -1] #the last column of data frame(Z_Revenue)
 
 # splitting the dataset into train and test
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.33, random_state=0)
-print(X_train)
-print(X_test)
+x_train, x_test, y_train, y_test = train_test_split(
+    x, y, test_size=0.33, random_state=0)
+print(x_train)
+print(x_test)
