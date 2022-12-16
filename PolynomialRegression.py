@@ -48,9 +48,6 @@ df['Dt_Customer']=df['Dt_Customer'].map(dt.datetime.toordinal)
 x = df[['Year_Birth','Graduation','PhD','Master','Basic','2n Cycle','Absurd','Alone','Divorced','Married','Single','Together','Widow','YOLO','Income','Kidhome', 'Teenhome','Dt_Customer','Recency','MntWines','MntFruits','MntFishProducts','MntSweetProducts','MntGoldProds','NumDealsPurchases','NumWebPurchases','NumCatalogPurchases','NumStorePurchases','NumWebVisitsMonth','AcceptedCmp4','AcceptedCmp5','AcceptedCmp1','AcceptedCmp2','Complain','Z_CostContact','Z_Revenue','Response']].values
 y = df['MntMeatProducts'].values
 
-x = df.iloc[:, :-1]
-y = df.iloc[:, -1]
-
 # splitting the dataset into train and test
 x_train, x_test, y_train, y_test = train_test_split( x, y, test_size=0.25, random_state=0)
 
@@ -81,6 +78,7 @@ y_pred = regression_model.predict(poly_x_values)
 coef= regression_model.coef_
 
 print(coef)
+print(regression_model.score(x_test,y_test))
 
 mean_squared_error(y, y_pred, squared=False)
 

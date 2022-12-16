@@ -1,11 +1,7 @@
-import matplotlib.pyplot as plt
-import numpy as np
 import pandas as pd
-from sklearn.metrics import accuracy_score
+from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.tree import DecisionTreeClassifier, plot_tree
-from sklearn import tree
+
 
 #Data preprocessing!!! >>>>>>>>>>>
 missingValues = ["n/a", "na", "--", "NA", "N/A", "NaN", " "]
@@ -65,18 +61,16 @@ X_test.fillna(X_test.mean(), inplace=True)
 y_train.fillna(y_train.mean(), inplace=True)
 y_test.fillna(y_test.mean(), inplace=True)
 
-# Fitting Polynomial Regression to the dataset
-from sklearn.linear_model import LinearRegression
-from sklearn.preprocessing import PolynomialFeatures
-poly_reg = PolynomialFeatures(degree=4)
-X_poly = poly_reg.fit_transform(X)
-pol_reg = LinearRegression()
-pol_reg.fit(X_poly, y)
+model = LogisticRegression(solver='liblinear', random_state=0)
+model.fit(X_train, y_train)
 
-# Visualizing the Polymonial Regression results
-plt.scatter(X, y, color='red')
-plt.plot(X, pol_reg.predict(poly_reg.fit_transform(X)), color='blue')
-plt.title('Truth or Bluff (Linear Regression)')
-plt.xlabel('Position level')
-plt.ylabel('Salary')
-plt.show()
+print("---------------------------------")
+print("Intercept :")
+print(model.intercept_)
+print("---------------------------------")
+print("Coef :")
+print(model.coef_)
+print("---------------------------------")
+print("Score :")
+print(model.score(X_test,y_test))
+
