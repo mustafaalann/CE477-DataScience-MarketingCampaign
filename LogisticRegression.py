@@ -1,6 +1,10 @@
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.metrics import confusion_matrix as cm
 
 
 #Data preprocessing!!! >>>>>>>>>>>
@@ -73,4 +77,13 @@ print(model.coef_)
 print("---------------------------------")
 print("Score :")
 print(model.score(X_test,y_test))
+
+predictions = model.predict(X_test)
+score = round(accuracy_score(y_test, predictions), 3)
+cm1 = cm(y_test, predictions)
+sns.heatmap(cm1, annot=True, fmt=".0f")
+plt.xlabel('Predicted Values')
+plt.ylabel('Actual Values')
+plt.title('Accuracy Score: {0}'.format(score), size = 15)
+plt.show()
 
