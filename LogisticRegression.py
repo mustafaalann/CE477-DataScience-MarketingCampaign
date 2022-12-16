@@ -53,8 +53,8 @@ print(data)
 
 
 #Training and Testing set preperation
-y = data['Response']
-del data['Response']
+y = data['Teenhome']
+del data['Teenhome']
 X = data.copy()
 X['Income'] = X['Income'].fillna(X['Income'].mean())
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33)
@@ -71,9 +71,7 @@ model.fit(X_train, y_train)
 print("---------------------------------")
 print("Intercept :")
 print(model.intercept_)
-print("---------------------------------")
-print("Coef :")
-print(model.coef_)
+
 print("---------------------------------")
 print("Score :")
 print(model.score(X_test,y_test))

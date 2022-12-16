@@ -40,8 +40,8 @@ df = df.join(final_array_Education)
 df['Dt_Customer'] = pd.to_datetime(df['Dt_Customer'])
 df['Dt_Customer']=df['Dt_Customer'].map(dt.datetime.toordinal)
 
-x = df[['Year_Birth','Graduation','PhD','Master','Basic','2n Cycle','Absurd','Alone','Divorced','Married','Single','Together','Widow','YOLO','Income','Kidhome', 'Teenhome','Dt_Customer','Recency','MntWines','MntFruits','MntFishProducts','MntSweetProducts','MntGoldProds','NumDealsPurchases','NumWebPurchases','NumCatalogPurchases','NumStorePurchases','NumWebVisitsMonth','AcceptedCmp4','AcceptedCmp5','AcceptedCmp1','AcceptedCmp2','Complain','Z_CostContact','Z_Revenue','Response']]
-y = df['MntMeatProducts']
+x = df[['Year_Birth','Graduation','PhD','Master','Basic','2n Cycle','Absurd','Alone','Divorced','Married','Single','Together','Widow','YOLO','Income','Kidhome','Dt_Customer','Recency','MntWines','MntFruits','MntMeatProducts','MntFishProducts','MntSweetProducts','MntGoldProds','NumDealsPurchases','NumWebPurchases','NumCatalogPurchases','NumStorePurchases','NumWebVisitsMonth','AcceptedCmp4','AcceptedCmp5','AcceptedCmp1','AcceptedCmp2','Complain','Z_CostContact','Z_Revenue','Response']]
+y = df['Teenhome']
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state = 42)
 
@@ -51,7 +51,7 @@ regr.fit(x_train, y_train)
 
 print('Intercept: \n', regr.intercept_)
 print('Coefficients: \n', regr.coef_)
-
+print('Score: \n', regr.score(x_test,y_test))
 # with statsmodels
 x_train = sm.add_constant(x_train)  # adding a constant
 
