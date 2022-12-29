@@ -67,10 +67,13 @@ predictions = clf.predict(X_test)
 print("Accuracy of classification:")
 print(accuracy_score(y_test, predictions))
 
-# Visualisation
+
+'''
+# Visualisation of classification
 fig, ax = plt.subplots(figsize=(70, 70))
 tree.plot_tree(clf, feature_names=X.columns, class_names="Response", filled=True)
 plt.show()
+'''
 
 # Bagging Classifier
 
@@ -87,7 +90,7 @@ bag_model.fit(X_train, y_train)
 print("Accuracy of bagging classifier (training set):")
 print(bag_model.oob_score_)
 print("Accuracy of bagging classifier (testing set - to see if it overfits):")
-# we're not getting a lower value than training set so no, it does not overfit
+# if we're not getting a lower value than training set it does not overfits
 print(bag_model.score(X_test, y_test))
 
 # Visualisation
