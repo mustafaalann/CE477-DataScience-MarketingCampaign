@@ -24,4 +24,4 @@ y_pred = clusterer.fit_predict(X)
 
 plt.figure(figsize=(12,9))
 plt.annotate('CE 477', xy=(0.03, 0.95), xycoords='axes fraction')
-plt.scatter(X[:, 0], X[:, 1], c=y_pred, s=50, cmap='Dark2')
+plt.scatter(X.iloc[:, 0], X.iloc[:, 1], c=y_pred, s=50, cmap='Dark2')
