@@ -18,7 +18,7 @@ print(normalizedData)
 #initialized kmeans parameters
 kmeans_kwargs = {
 "init": "random",
-"n_init": 10,
+"n_init": 100,
 "random_state": 1,
 }
 
@@ -36,7 +36,7 @@ plt.xlabel("Number of Clusters")
 plt.ylabel("SSE")
 plt.show()
 #instantiated the k-means via using optimal number of clusters
-kmeans = KMeans(init="random", n_clusters=3, n_init=10, random_state=1)
+kmeans = KMeans(init="random", n_clusters=3, n_init=100, random_state=1)
 
 #fit k-means algorithm to dataset
 kmeans.fit(normalizedData)
