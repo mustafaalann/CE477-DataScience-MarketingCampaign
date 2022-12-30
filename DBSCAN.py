@@ -37,3 +37,6 @@ plt.annotate('Income and MntWines DBSCAN', xy=(0.03, 0.95), xycoords='axes fract
 plt.scatter(X.iloc[:, 0], X.iloc[:, 1], c=y_pred, s=50, cmap='rainbow')
 plt.show()
 print(len(y_pred))
+#Returns the number of clusters
+DBSCAN_clusters_ = len(set(DBSCAN)) - (1 if -1 in DBSCAN else 0)
+print('Estimated number of clusters: %d' % DBSCAN_clusters_)
