@@ -16,7 +16,7 @@ print(columnsToRescale)
 scaler = per.StandardScaler().fit(columnsToRescale)
 standardizedData = scaler.transform(columnsToRescale)
 standardizedData = pd.DataFrame(standardizedData,index=columnsToRescale.index,columns=columnsToRescale.columns)
-print('After Standardization')
+print('After StandardizationN')
 print(standardizedData)
 X = standardizedData
 
